@@ -1,19 +1,18 @@
 import streamlit as st
 import zxcvbn
 
-background_image = "./bg.img"
+background_image = "./bg.img"  # Ensure this file exists in the project directory
 st.markdown(
     f"""
-    <style>
-    body {{
-        background-image: url({background_image});
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 100vh;
-        margin: 0;
-    }}
-    </style>
+    <body style="background-image: url({background_image});
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+">
+</body>
     """,
     unsafe_allow_html=True
 )
@@ -51,7 +50,7 @@ if password:
     strength_color, strength_label = get_strength_color(score)
     
     # Display password strength bar and label
-    st.markdown(f"<div style='background-color:{strength_color};height: 20px;width:{score * 25}%;'></div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='width:100%; height:36px; border-radius:18px; padding:4px; background-color:gray;'><div style='background-color:{strength_color};height: 32px;border-radius: 18px;width:{score * 25}%;'><p  style='color:black; font-weight: 700; font-size:20px'>{score * 25}% secure</p></div></div>", unsafe_allow_html=True)
     
     # Display password strength text and suggestions
     st.write(f"Strength: {strength_label}")
